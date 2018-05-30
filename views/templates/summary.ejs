@@ -1,0 +1,14 @@
+<div class="card" >
+  <div class="card-header">
+    Attribute Summary
+  </div>
+  <ul class="list-group list-group-flush">
+    <% if(att != 'undefined') { %>
+      <% att.forEach(function(element){ %>
+       <li class="list-group-item list-group-item-danger">Attribute error: <%- element %></li>
+     <%});%>
+    <% } else { %>
+      <p><%= '' %></p>
+    <% } %>
+  </ul>
+</div>

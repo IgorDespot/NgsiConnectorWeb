@@ -1,0 +1,32 @@
+<form method="POST" action="/update" enctype="multipart/form-data">
+	<!-- COMPONENT START -->
+	<div class="form-group">
+		<label for="">Fiware-Service</label>
+		<div class="input-group input-file" name="Fichier1">
+			<input name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service a file...' />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="">Fiware-Service-Path</label>
+		<div class="input-group input-file" name="Fichier1">
+			<input name="fiwareServicePath" type="text" class="form-control" placeholder='Enter Fiware-Service-Path a file...' />
+		</div>
+	</div>
+	<div class="form-group">
+			<label for="">File for upload</label>
+		<div class="input-group input-file" name="Fichier1">
+			<input name="userFile" type="file" class="form-control" placeholder='Choose a file...' />
+		</div>
+	</div>
+	<!-- COMPONENT END -->
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary pull-right">Update</button>
+	</div>
+
+	<p class="text-center text-white bg-danger">
+		<%= typeof msg != 'undefined' ? msg : '' %>
+	</p>
+	<p class="text-center text-white bg-success">
+		<%= typeof succ != 'undefined' ? succ : '' %>
+	</p>
+</form>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>NGSI CONNECTOR</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/home.css" rel="stylesheet">
+    <link href="/stylesheets/entity.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Waste4Think</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/">Home</a>
+        <a class="p-2 text-dark" href="/logout">Logout</a>
+        <a class="p-2 text-dark" href="/entitieshome">Entities</a>
+        <a class="p-2 text-dark" href="/detailshome">Details</a>
+        <a class="p-2 text-dark" href="/upload">Create</a>
+        <a class="p-2 text-dark" href="/update">Update</a>
+      </nav>
+    </div>
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Ngsi Connector Web</h1>
+      <p class="lead">Please choose .csv file and procede to create entities from it.</p>
+      <p>Entity type in file must be equal to: DepositPoint, DepositPointType, Waste, SortingType, Vehicle, VehicleType, Transaction and other entities</p>
+    </div>
+
+    <div class="container">
+                <%- include('./templates/upload')%>
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+          </div>
+      </footer>
+    </div>
+    <script src="/javascripts/app.js"></script>
+  </body>
+</html>
