@@ -50,6 +50,11 @@ module.exports = (passport) => {
       .getSingle(req.body.entityid, req.body.fiwareService, req.body.fiwareServicePath, req, res);
   });
 
+  router.post('/indextype', db.users.findIfLoggedin, (req, res) => {
+    ngsiConnector.entities
+      .getByType(req.body.entityid, req.body.fiwareService, req.body.fiwareServicePath, req, res);
+  });
+
   router.get('/detailshome', db.users.findIfLoggedin, (req, res) => {
     res.render('detailshome');
   });
@@ -68,6 +73,10 @@ module.exports = (passport) => {
 
   router.get('/entitieshome', db.users.findIfLoggedin, (req, res) => {
     res.render('entities');
+  });
+
+  router.get('/typehome', db.users.findIfLoggedin, (req, res) => {
+    res.render('typehome');
   });
 
   router.post('/upload', db.users.findIfLoggedin, (req, res) => {

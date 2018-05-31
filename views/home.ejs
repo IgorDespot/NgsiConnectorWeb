@@ -25,6 +25,7 @@
         <a class="p-2 text-dark" href="/logout">Logout</a>
         <a class="p-2 text-dark" href="/entitieshome">Entities</a>
         <a class="p-2 text-dark" href="/detailshome">Details</a>
+        <a class="p-2 text-dark" href="/typehome">Type</a>
         <a class="p-2 text-dark" href="/upload">Create</a>
         <a class="p-2 text-dark" href="/update">Update</a>
       </nav>
@@ -49,7 +50,7 @@
               <li>Service and service path required</li>
               <li>See results of operation</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">List Entities</button>
+            <button  type="button" class="btn btn-lg btn-block btn-outline-primary" onClick="replyClick(this.id)" id="entitieshome">List Entities</button>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -64,7 +65,7 @@
 				<li>Service and service path required</li>
 				<li>See results of creation</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Create Entities</button>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary" onClick="replyClick(this.id)" id="upload">Create Entities</button>
           </div>
         </div>
         <div class="card mb-4 box-shadow">
@@ -79,7 +80,7 @@
 				<li>Service and service path required</li>
 				<li>See the results of operation</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Update Entities</button>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary " onClick="replyClick(this.id)" id="update">Update Entities</button>
           </div>
         </div>
       </div>
@@ -90,6 +91,6 @@
           </div>
       </footer>
     </div>
-    </script>
+    <script src="/javascripts/app.js"></script>
   </body>
 </html>
