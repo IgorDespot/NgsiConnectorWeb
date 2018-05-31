@@ -46,8 +46,18 @@ module.exports = (passport) => {
   });
 
   router.post('/index', db.users.findIfLoggedin, (req, res) => {
-    ngsiConnector.entities
-      .getSingle(req.body.entityid, req.body.fiwareService, req.body.fiwareServicePath, req, res);
+    if (!req.body.fiwareService) {
+      res.render('entities', {
+        msg: 'Please provide Fiware Service.'
+      });
+    } else if (!req.body.fiwareServicePath) {
+      res.render('entities', {
+        msg: 'Please provide Fiware Service Path.'
+      });
+    } else {
+      ngsiConnector.entities
+        .getSingle(req.body.entityid, req.body.fiwareService, req.body.fiwareServicePath, req, res);
+    }
   });
 
   router.post('/indextype', db.users.findIfLoggedin, (req, res) => {
