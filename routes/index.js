@@ -47,11 +47,11 @@ module.exports = (passport) => {
 
   router.post('/index', db.users.findIfLoggedin, (req, res) => {
     if (!req.body.fiwareService) {
-      res.render('entities', {
+      res.render('detailshome', {
         msg: 'Please provide Fiware Service.'
       });
     } else if (!req.body.fiwareServicePath) {
-      res.render('entities', {
+      res.render('detailshome', {
         msg: 'Please provide Fiware Service Path.'
       });
     } else {
