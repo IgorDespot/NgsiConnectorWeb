@@ -22,10 +22,16 @@
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary pull-right">Update</button>
 	</div>
-
-	<p class="text-center text-white bg-danger">
-		<%= typeof msg != 'undefined' ? msg : '' %>
-	</p>
+	<%if (typeof msg != 'undefined') { %>
+		<div class="card">
+		<div class="card-header">
+			Warning
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item list-group-item-danger"><%= msg %></li>
+		</ul>
+		</div>
+	<% } %>
 	<p class="text-center text-white bg-success">
 		<%= typeof succ != 'undefined' ? succ : '' %>
 	</p>
