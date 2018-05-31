@@ -59,6 +59,9 @@
              <% if(data.type == 'Waste'){ %>
                 <%- include('./templates/waste', {element: data}); %>
              <% } %>
+             <% if(data.type == 'WasteCategory'){ %>
+                <%- include('./templates/wasteCategory', {element: data}); %>
+             <% } %>
              <% if(data.type == 'DepositPointIsle'){ %>
                 <%- include('./templates/depositPoint', {element: data}); %>
              <% } %>
