@@ -23,7 +23,7 @@ RUN sudo npm cache clean -f && \
 # Download latest version of the code and install npm dependencies
 RUN git clone https://github.com/IgorDespot/NgsiConnectorWeb.git && \
 	cd NgsiConnectorWeb && \
-	npm install &&
+	npm install
 
 # Change Workdir
 WORKDIR /opt/NgsiConnectorWeb
