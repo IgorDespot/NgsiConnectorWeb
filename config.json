@@ -1,4 +1,5 @@
 {
     "url": "http://localhost:3000/api/entities/",
-    "urlType": "http://localhost:3000/api/entities/type"
+    "urlType": "http://localhost:3000/api/entities/type",
+    "port": 5000  
 }
