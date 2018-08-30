@@ -1,13 +1,24 @@
-const records = [{
-  id: 1,
-  username: 'zamudio',
-  password: '123'
-},
-{
-  id: 2,
-  username: 'topsed',
-  password: '321'
-}
+const records = [
+  {
+    id: 1,
+    username: 'zamudio',
+    password: '123'
+  },
+  {
+    id: 2,
+    username: 'seveso',
+    password: '123'
+  },
+  {
+    id: 3,
+    username: 'cascais',
+    password: '123',
+  },
+  {
+    id: 4,
+    username: 'halandri',
+    password: '123'
+  }
 ];
 
 exports.findById = (id, cb) => {
