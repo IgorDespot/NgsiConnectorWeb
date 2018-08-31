@@ -3,25 +3,59 @@
 	<div class="form-group">
 		<label for="">Fiware-Service</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service a file' />
+			<input id="fiwareService" name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service a file' />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="">Fiware-Service-Path</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="fiwareServicePath" type="text" class="form-control" placeholder='Enter Fiware-Service-Path a file' />
+			<input id="fiwareServicePath" name="fiwareServicePath" type="text" class="form-control" placeholder='Enter Fiware-Service-Path a file' />
 		</div>
 	</div>
+	<div class="form-group">
+			<label for="">Access-Token</label>
+			<div class="input-group input-file" name="Fichier1">
+					<%if (typeof token != 'undefined') { %>
+						<input id="accessToken" name="accessToken" type="text" class="form-control" placeholder='Enter Access-Token...'  value=<%= token %> />
+					<% } else { %>
+						<input id="accessToken" name="accessToken" type="text" class="form-control" placeholder='Enter Access-Token...' />
+					<% } %>
+			</div>
+		</div>
   <div class="form-group">
 		<label for="">Entity-ID</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="entityid" type="text" class="form-control" placeholder='Enter Entity ID' />
+			<input id="entityid" name="entityid" type="text" class="form-control" placeholder='Enter Entity ID' />
 		</div>
 	</div>
 	<!-- COMPONENT END -->
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary pull-right">Show Details</button>
-	</div>
+			<button id="main" type="submit" class="btn btn-primary pull-right">Show Entity</button>
+			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+					Get Access Token
+				</button>
+		</div>
+		<div class="collapse" id="collapseExample">
+				<div class="card card-body">
+					<form method="POST" action="/token">
+							<div class="form-group">
+									<label for="">Email</label>
+									<div class="input-group input-file" name="Fichier1">
+										<input name="username" type="text" class="form-control" placeholder='Enter Fiware-Service...' />
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="">Password</label>
+									<div class="input-group input-file" name="Fichier1">
+										<input name="password" type="password" class="form-control" placeholder='Enter Fiware-Service-Path...' />
+									</div>
+								</div>
+								<div class="form-group">
+										<button id="main" type="submit" class="btn btn-primary pull-right">Send</button>
+									</div>
+					</form>
+				</div>
+			</div>
 	<%if (typeof msg != 'undefined') { %>
 		<div class="card">
 	  <div class="card-header">

@@ -1,0 +1,34 @@
+<form method="POST" action="/rules">
+	<!-- COMPONENT START -->
+	<div class="form-group">
+		<label for="">Rule Name</label>
+		<div class="input-group input-file" name="Fichier1">
+			<input id="rule" name="rule" type="text" class="form-control" placeholder='Enter Rule...' />
+		</div>
+	</div>
+	<!-- COMPONENT END -->
+	<div class="form-group">
+    <button id='test' type="submit" class="btn btn-primary pull-right">Show Rule</button>
+    <button type="submit" class="btn btn-primary pull-right">Show All Rules</button>
+  </div>
+	<%if (typeof msg != 'undefined') { %>
+		<div class="card">
+		<div class="card-header">
+			Warning
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item list-group-item-danger"><%= msg %></li>
+		</ul>
+		</div>
+	<% } %>
+	<p class="text-center text-white bg-success">
+		<%= typeof succ != 'undefined' ? succ : '' %>
+  </p>
+  <%if (typeof rules != 'undefined') { %>
+  <ul class="list-group">
+      <% rules.forEach(function(rule) { %>
+        <li class="list-group-item"><%= rule %></li>
+     <% }); %> 
+  </ul>
+  <% } %>
+</form>
