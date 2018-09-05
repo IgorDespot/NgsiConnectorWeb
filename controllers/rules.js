@@ -12,7 +12,9 @@ const getAll = (req, res) => {
       });
     })
     .catch((error) => {
-      res.send(`Error occured, reason: ${ error }`);
+      res.render("rules", {
+        msg: error,
+      });
     });
 };
 

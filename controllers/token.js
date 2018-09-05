@@ -20,7 +20,9 @@ const getToken = (req, res, page) => {
       });
     })
     .catch((error) => {
-      res.send(`Error happend, details: ${ error }`);
+      res.render(page, {
+        msg: error,
+      });
     });
 };
 
