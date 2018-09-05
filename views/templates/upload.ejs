@@ -3,31 +3,64 @@
 	<div class="form-group">
 		<label for="">Fiware-Service</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service...' />
+			<input id="fiwareServiceUpload" name="fiwareServiceUpload" type="text" class="form-control test" placeholder='Enter Fiware-Service...' />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="">Fiware-Service-Path</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="fiwareServicePath" type="text" class="form-control" placeholder=<%= data %> />
+				<%if (typeof data != 'undefined') { %>
+					<input id="fiwareServicePathUpload" name="fiwareServicePathUpload" type="text" class="form-control test" placeholder=<%= data %> />
+				<% } else { %>
+					<input id="fiwareServicePathUpload" name="fiwareServicePathUpload" type="text" class="form-control test" placeholder="Enter Fiware Fiware-Service-Path.." />
+				<% } %>
+			
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="">Access-Token</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="accessToken" type="text" class="form-control" placeholder='Enter Access-Token...' />
+				<%if (typeof token != 'undefined') { %>
+					<input id="accessTokenUpload" name="accessToken" type="text" class="form-control test" placeholder='Enter Access-Token...'  value=<%= token %> />
+				<% } else { %>
+					<input id="accessTokenUpload" name="accessToken" type="text" class="form-control test" placeholder='Enter Access-Token...' />
+				<% } %>
 		</div>
 	</div>
 	<div class="form-group">
-			<label for="">File for upload</label>
+		<label for="">File for upload</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input name="userFile" type="file" class="form-control" placeholder='Choose a file...' />
+			<input id="userFile" name="userFile" type="file" class="form-control" placeholder='Choose a file...' />
 		</div>
 	</div>
 	<!-- COMPONENT END -->
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary pull-right">Create</button>
+		<button id="main2" type="submit" class="btn btn-primary pull-right">Create Entities</button>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				Get Access Token
+		</button>
 	</div>
+	<div class="collapse" id="collapseExample">
+			<div class="card card-body">
+				<form method="POST" action="/token">
+						<div class="form-group">
+								<label for="">Email</label>
+								<div class="input-group input-file" name="Fichier1">
+									<input name="username" type="text" class="form-control" placeholder='Enter Fiware-Service...' />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">Password</label>
+								<div class="input-group input-file" name="Fichier1">
+									<input name="password" type="password" class="form-control" placeholder='Enter Fiware-Service-Path...' />
+								</div>
+							</div>
+							<div class="form-group">
+									<button id="main3" type="submit" class="btn btn-primary pull-right">Send</button>
+							</div>
+				</form>
+			</div>
+		</div>
 	<%if (typeof msg != 'undefined') { %>
 		<div class="card">
 	  <div class="card-header">
