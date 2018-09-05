@@ -2,6 +2,6 @@
     "url": "https://localhost:3001/v1/entities/",
     "urlType": "https://localhost:3001/v1/entities/type/",
     "port": 3002,
-    "clientID": "116c95e325ab4d3cae3ab8ae71694cc1",
-    "clientSecret": "5f3bf9227833430a81e4dd662c61ee59"
+    "clientID": "4f5569844c47499fac818cdcd91c9d5e",
+    "clientSecret": "8bd7cc613241418c9bc3155bf2ef3da7"
 }
