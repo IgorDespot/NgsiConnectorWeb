@@ -77,8 +77,8 @@ const postCreate = (req, res) => {
     method: "POST",
     uri: "https://localhost:3001/v1/entities/",
     headers: {
-      "Fiware-Service": req.body.fiwareService,
-      "Fiware-ServicePath": req.body.fiwareServicePath,
+      "Fiware-Service": req.body.fiwareServiceUpload,
+      "Fiware-ServicePath": req.body.fiwareServicePathUpload,
       "X-Auth-Token": req.body.accessToken,
     },
     formData: {
@@ -95,7 +95,6 @@ const postCreate = (req, res) => {
       if (JSON.parse(result).length === 3) {
         const attr = JSON.parse(result)[ 1 ];
         const fail = resp.responses.errors(JSON.parse(result)[ 2 ]);
-        resp.responses.attributeFail(attr);
         const summ = resp.responses.summary(JSON.parse(result)[ 0 ]);
         res.render("success", {
           succ: summ, data: fail, att: attr,
