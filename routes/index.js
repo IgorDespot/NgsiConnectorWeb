@@ -1,9 +1,11 @@
 const express = require("express");
 const db = require("../db");
 const rootController = require("../controllers");
+const rootChecks = require("../utilis");
 const { multer } = require("../middlewares");
 
 const router = express.Router();
+
 module.exports = (passport) => {
   router.get("/", db.users.findIfLoggedin, (req, res) => {
     res.render("home", {
@@ -19,7 +21,7 @@ module.exports = (passport) => {
 
   router.post(
     "/login", passport
-      .authenticate("local", { failureRedirect: "local", failureFlash: true }),
+      .authenticate("local", { failureRedirect: "login", failureFlash: true }),
     (req, res) => {
       res.redirect("/");
     },
@@ -47,11 +49,17 @@ module.exports = (passport) => {
   });
 
   router.post("/indextype", db.users.findIfLoggedin, (req, res) => {
-    rootController.getEntityType(req, res);
+    if (req.body.username) {
+      rootController.getToken(req, res, "typehome");
+    } else {
+      rootController.getEntityType(req, res);
+    }
   });
 
   router.get("/detailshome", db.users.findIfLoggedin, (req, res) => {
-    res.render("detailshome");
+    res.render("detailshome", {
+      data: `/deusto/w4t/${ req.user.username }/real`,
+    });
   });
 
   router.get("/details", db.users.findIfLoggedin, (req, res) => {
@@ -65,7 +73,9 @@ module.exports = (passport) => {
   });
 
   router.get("/update", db.users.findIfLoggedin, (req, res) => {
-    res.render("update");
+    res.render("update", {
+      data: `/deusto/w4t/${ req.user.username }/real`,
+    });
   });
 
   router.get("update", db.users.findIfLoggedin, (req, res) => {
@@ -96,11 +106,31 @@ module.exports = (passport) => {
   });
 
   router.post("/upload", db.users.findIfLoggedin, multer, (req, res) => {
-    rootController.postEntity(req, res);
+    if (req.body.username) {
+      rootController.getToken(req, res, "upload");
+    } else if (!rootChecks.userServicePath(req, res)) {
+      const pathSplit = req.body.fiwareServicePathUpload.split("/");
+      res.render("upload", {
+        msg: `U cannot create items logged as ${ req.user.username } user on path
+        avaible only to ${ pathSplit[ 3 ] } user`,
+      });
+    } else {
+      rootController.postEntity(req, res);
+    }
   });
 
   router.post("/update", db.users.findIfLoggedin, multer, (req, res) => {
-    rootController.postEntityUpdate(req, res);
+    if (req.body.username) {
+      rootController.getToken(req, res, "update");
+    } else if (!rootChecks.userServicePath(req, res)) {
+      const pathSplit = req.body.fiwareServicePathUpload.split("/");
+      res.render("update", {
+        msg: `U cannot create items logged as ${ req.user.username } user on path
+        avaible only to ${ pathSplit[ 3 ] } user`,
+      });
+    } else {
+      rootController.postEntityUpdate(req, res);
+    }
   });
   return router;
 };
