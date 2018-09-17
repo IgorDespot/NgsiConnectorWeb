@@ -21,7 +21,8 @@ const getToken = (req, res, page) => {
     })
     .catch((error) => {
       res.render(page, {
-        msg: error,
+        data: `/deusto/w4t/${ req.user.username }/real`,
+        msg: "Wrong credentials used for obtaining token, check username/password and try again.",
       });
     });
 };
