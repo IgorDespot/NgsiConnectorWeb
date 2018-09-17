@@ -1,19 +1,20 @@
 const request = require("request-promise");
 const resp = require("../lib/responses/index");
+const { response } = require("../utilis");
 
 const getAll = (req, res) => {
   request({
     method: "GET",
-    uri: "https://localhost:3001/v1/entities",
+    uri: "https://localhost:3001/v1/entities/",
     headers: {
       "Fiware-Service": req.body.fiwareService,
-      "Fiware-ServicePath": req.body.req.body.fiwareServicePath,
+      "Fiware-ServicePath": req.body.fiwareServicePath,
       "X-Auth-Token": req.body.accessToken,
     },
     json: true,
   })
     .then((result) => {
-      res.render("entitiy", {
+      res.render("entity", {
         data: result,
         message: "TODO message",
       });
@@ -31,7 +32,7 @@ const getSingle = (req, res) => {
     uri: `https://localhost:3001/v1/entities/${ req.body.entityid }`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
-      "Fiware-ServicePath": req.body.req.body.fiwareServicePath,
+      "Fiware-ServicePath": req.body.fiwareServicePath,
       "X-Auth-Token": req.body.accessToken,
     },
     json: true,
@@ -54,7 +55,7 @@ const getType = (req, res) => {
     uri: `https://localhost:3001/v1/entities/type/${ req.body.type }`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
-      "Fiware-ServicePath": req.body.req.body.fiwareServicePath,
+      "Fiware-ServicePath": req.body.fiwareServicePath,
       "X-Auth-Token": req.body.accessToken,
     },
     json: true,
@@ -92,7 +93,7 @@ const postCreate = (req, res) => {
     },
   })
     .then((result) => {
-      if (JSON.parse(result).length === 3) {
+      if (JSON.parse(result)[1].length !== 0) {
         const attr = JSON.parse(result)[ 1 ];
         const fail = resp.responses.errors(JSON.parse(result)[ 2 ]);
         const summ = resp.responses.summary(JSON.parse(result)[ 0 ]);
@@ -100,7 +101,7 @@ const postCreate = (req, res) => {
           succ: summ, data: fail, att: attr,
         });
       } else {
-        const fail = resp.responses.errors(JSON.parse(result)[ 1 ]);
+        const fail = resp.responses.errors(JSON.parse(result)[ 2 ]);
         const summ = resp.responses.summary(JSON.parse(result)[ 0 ]);
         res.render("success", {
           succ: summ, data: fail,
@@ -119,8 +120,8 @@ const postUpdate = (req, res) => {
     method: "POST",
     uri: "https://localhost:3001/v1/entities/update",
     headers: {
-      "Fiware-Service": req.body.fiwareService,
-      "Fiware-ServicePath": req.body.fiwareServicePath,
+      "Fiware-Service": req.body.fiwareServiceUpload,
+      "Fiware-ServicePath": req.body.fiwareServicePathUpload,
       "X-Auth-Token": req.body.accessToken,
     },
     formData: {
@@ -134,17 +135,16 @@ const postUpdate = (req, res) => {
     },
   })
     .then((result) => {
-      if (JSON.parse(result).length === 3) {
+      if (JSON.parse(result)[1].length !== 0) {
         const attr = JSON.parse(result)[ 1 ];
-        const fail = result.responses.errors(JSON.parse(result)[ 2 ]);
-        resp.responses.attributeFail(attr);
-        const summ = result.responses.summary(JSON.parse(result)[ 0 ]);
+        const fail = resp.responses.errors(JSON.parse(result)[ 2 ]);
+        const summ = resp.responses.summary(JSON.parse(result)[ 0 ]);
         res.render("success", {
           succ: summ, data: fail, att: attr,
         });
       } else {
-        const fail = result.responses.errors(JSON.parse(result)[ 1 ]);
-        const summ = result.responses.summary(JSON.parse(result)[ 0 ]);
+        const fail = resp.responses.errors(JSON.parse(result)[ 2 ]);
+        const summ = resp.responses.summary(JSON.parse(result)[ 0 ]);
         res.render("success", {
           succ: summ, data: fail,
         });
