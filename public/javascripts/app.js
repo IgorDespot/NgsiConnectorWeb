@@ -11,10 +11,10 @@ $(document).ready(function(){
         $('#test').attr('disabled',true);
 })
 
-$('#main').attr('disabled', true);
-$('#fiwareService, #fiwareService, #accessToken, #entityid').bind('keyup', function () {
-  if(allFilled2()) $('#main').removeAttr('disabled');
-})
+// $('#main').attr('disabled', true);
+// $('#fiwareService, #fiwareService, #accessToken').bind('keyup', function () {
+//   if(allFilled2()) $('#main').removeAttr('disabled');
+// })
 
   $('#main2').attr('disabled', true);
   $('#fiwareServiceUpload, #fiwareServicePathUpload, #accessTokenUpload').bind('keyup', function () {
