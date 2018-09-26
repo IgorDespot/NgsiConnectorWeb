@@ -1,7 +1,7 @@
 {
-    "url": "https://localhost:3001/v1/entities/",
-    "urlType": "https://localhost:3001/v1/entities/type/",
-    "port": 3002,
-    "clientID": "116c95e325ab4d3cae3ab8ae71694cc1",
-    "clientSecret": "5f3bf9227833430a81e4dd662c61ee59"
+    "url": "https://192.168.229.62:3000/v1/entities/",
+    "urlType": "https://192.168.229.62:3000/v1/entities/type/",
+    "port": 3001,
+    "clientID": "3bb5a3ee06854161a05bfdcdeab7c1cf",
+    "clientSecret": "82e2f867b9db441ea0dd3659e05cbdcc"
 }
