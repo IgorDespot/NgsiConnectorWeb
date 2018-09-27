@@ -1,6 +1,5 @@
 {
-    "url": "https://192.168.229.62:3000/v1/entities/",
-    "urlType": "https://192.168.229.62:3000/v1/entities/type/",
+    "url": "https://192.168.229.62:3000/v1",
     "port": 3001,
     "clientID": "3bb5a3ee06854161a05bfdcdeab7c1cf",
     "clientSecret": "82e2f867b9db441ea0dd3659e05cbdcc"
