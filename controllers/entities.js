@@ -1,11 +1,12 @@
 const request = require("request-promise");
 const resp = require("../lib/responses/index");
 const { response } = require("../utilis");
+const config = require('../config.json')
 
 const getAll = (req, res) => {
   request({
     method: "GET",
-    uri: "https://localhost:3001/v1/entities/",
+    uri: `${config.url}/entities/`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
       "Fiware-ServicePath": req.body.fiwareServicePath,
@@ -21,6 +22,7 @@ const getAll = (req, res) => {
     })
     .catch((error) => {
       res.render("entities", {
+        data: `/deusto/w4t/${ req.user.username }/real`,
         msg: error.error,
       });
     });
@@ -29,7 +31,7 @@ const getAll = (req, res) => {
 const getSingle = (req, res) => {
   request({
     method: "GET",
-    uri: `https://localhost:3001/v1/entities/${ req.body.entityid }`,
+    uri: `${config.url}/entities/${ req.body.entityid }`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
       "Fiware-ServicePath": req.body.fiwareServicePath,
@@ -44,6 +46,7 @@ const getSingle = (req, res) => {
     })
     .catch((error) => {
       res.render("detailshome", {
+        data: `/deusto/w4t/${ req.user.username }/real`,
         msg: resp.responses.errorResponse(error.message),
       });
     });
@@ -52,7 +55,7 @@ const getSingle = (req, res) => {
 const getType = (req, res) => {
   request({
     method: "GET",
-    uri: `https://localhost:3001/v1/entities/type/${ req.body.type }`,
+    uri: `${config.url}/entities/type/${ req.body.type }`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
       "Fiware-ServicePath": req.body.fiwareServicePath,
@@ -68,6 +71,7 @@ const getType = (req, res) => {
     })
     .catch((error) => {
       res.render("typehome", {
+        data: `/deusto/w4t/${ req.user.username }/real`,
         msg: resp.responses.errorResponse(error.message),
       });
     });
@@ -76,7 +80,7 @@ const getType = (req, res) => {
 const postCreate = (req, res) => {
   request({
     method: "POST",
-    uri: "https://localhost:3001/v1/entities/",
+    uri: `${config.url}/entities/`,
     headers: {
       "Fiware-Service": req.body.fiwareServiceUpload,
       "Fiware-ServicePath": req.body.fiwareServicePathUpload,
@@ -110,6 +114,7 @@ const postCreate = (req, res) => {
     })
     .catch((error) => {
       res.render("upload", {
+        data: `/deusto/w4t/${ req.user.username }/real`,
         msg: error.message,
       });
     });
@@ -118,7 +123,7 @@ const postCreate = (req, res) => {
 const postUpdate = (req, res) => {
   request({
     method: "POST",
-    uri: "https://localhost:3001/v1/entities/update",
+    uri: `${config.url}/entities/update`,
     headers: {
       "Fiware-Service": req.body.fiwareServiceUpload,
       "Fiware-ServicePath": req.body.fiwareServicePathUpload,
@@ -152,6 +157,7 @@ const postUpdate = (req, res) => {
     })
     .catch((error) => {
       res.render("upload", {
+        data: `/deusto/w4t/${ req.user.username }/real`,
         msg: error.message,
       });
     });

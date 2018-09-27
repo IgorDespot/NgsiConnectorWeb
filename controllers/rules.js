@@ -1,10 +1,11 @@
 const request = require("request-promise");
 const resp = require("../lib/responses");
+const config = require('../config.json')
 
 const getAll = (req, res) => {
   request({
     method: "GET",
-    uri: "https://localhost:3001/v1/rules",
+    uri: `${config.url}/rules`,
   })
     .then((result) => {
       res.render("rules", {
@@ -21,7 +22,7 @@ const getAll = (req, res) => {
 const getSingle = (req, res) => {
   request({
     method: "GET",
-    uri: `https://localhost:3001/v1/rules/${ req.body.rule }`,
+    uri: `${config.url}/rules/${ req.body.rule }`,
   })
     .then((result) => {
       res.render("rules", {
