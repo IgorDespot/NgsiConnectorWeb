@@ -4,7 +4,7 @@ const { clientID, clientSecret } = require("../config.json");
 const getToken = (req, res, page) => {
   request({
     method: "POST",
-    uri: "http://localhost:8000/oauth2/token",
+    uri: "http://192.168.229.62:8000/oauth2/token",
     headers: {
       "Content-Type": "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
