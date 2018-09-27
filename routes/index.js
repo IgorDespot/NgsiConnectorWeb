@@ -33,7 +33,7 @@ module.exports = (passport) => {
   });
 
   router.post("/entities", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username) {
+    if (req.body.username && !req.body.accessToken) {
       rootController.getToken(req, res, "entities");
     } else {
       rootController.getEntityAll(req, res);
@@ -41,7 +41,7 @@ module.exports = (passport) => {
   });
 
   router.post("/index", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username) {
+    if (req.body.username && !req.body.accessToken) {
       rootController.getToken(req, res, "detailshome");
     } else {
       rootController.getEntitySingle(req, res);
@@ -49,7 +49,7 @@ module.exports = (passport) => {
   });
 
   router.post("/indextype", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username) {
+    if (req.body.username && !req.body.accessToken) {
       rootController.getToken(req, res, "typehome");
     } else {
       rootController.getEntityType(req, res);
@@ -106,7 +106,7 @@ module.exports = (passport) => {
   });
 
   router.post("/upload", db.users.findIfLoggedin, multer, (req, res) => {
-    if (req.body.username) {
+    if (req.body.username && !req.body.accessToken) {
       rootController.getToken(req, res, "upload");
     } else if (!rootChecks.userServicePath(req, res)) {
       const pathSplit = req.body.fiwareServicePathUpload.split("/");
@@ -120,7 +120,7 @@ module.exports = (passport) => {
   });
 
   router.post("/update", db.users.findIfLoggedin, multer, (req, res) => {
-    if (req.body.username) {
+    if (req.body.username && !req.body.accessToken) {
       rootController.getToken(req, res, "update");
     } else if (!rootChecks.userServicePath(req, res)) {
       const pathSplit = req.body.fiwareServicePathUpload.split("/");
