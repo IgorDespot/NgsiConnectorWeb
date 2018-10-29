@@ -17,6 +17,7 @@ const getAll = (req, res) => {
     .then((result) => {
       res.render("entity", {
         data: result,
+        keys: Object.keys(result[0]),
         message: "TODO message",
       });
     })
@@ -66,6 +67,7 @@ const getType = (req, res) => {
     .then((result) => {
       res.render("entity", {
         data: result,
+        keys: Object.keys(result[0]),
         message: "TODO message",
       });
     })
