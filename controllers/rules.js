@@ -26,7 +26,7 @@ const getSingle = (req, res) => {
   })
     .then((result) => {
       res.render("rules", {
-        rules: resp.responses.summary(JSON.parse(result)),
+        rule: JSON.parse(result),
       });
     })
     .catch((error) => {
