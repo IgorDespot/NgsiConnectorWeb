@@ -12,7 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   <!-- Custom styles for this template -->
   <link href="/stylesheets/home.css" rel="stylesheet">
   <link href="/stylesheets/entity.css" rel="stylesheet">
@@ -23,14 +23,15 @@
     <%- include('./templatesTemp/navigation'); %>
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Ngsi Connector Web</h1>
+      <h1 class="display-4">NGSIConnectorWEB</h1>
       <p class="lead">Please provide Fiware-Service and Fiware-Service-Path and procede to list entities from it.</p>
       <p>Depending on Fiware-Service and Fiware-Service-Path different results will be presented</p>
     </div>
 
     <div class="container">
                 <%- include('./templates/entities')%>
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                
+      <footer id="footer" class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
           <div class="col-12 col-md">
             <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
