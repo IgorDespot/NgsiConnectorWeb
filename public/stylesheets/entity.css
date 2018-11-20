@@ -1,11 +1,23 @@
 #igor {
+  display: block;
+  max-height: 400;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+#despot {
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
   }
+    
+#patka {
+  height: auto;
+  width: 100%;
+}
 
-  #despot {
-      height: 400px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+/* #footer {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+} */
