@@ -1,12 +1,11 @@
 const request = require("request-promise");
 const resp = require("../lib/responses/index");
-const { response } = require("../utilis");
 const config = require('../config.json')
 
 const getAll = (req, res) => {
   request({
     method: "GET",
-    uri: `${config.url}/entities/`,
+    uri: `${config.url}/entities/?count=${req.body.entitiesAmount}`,
     headers: {
       "Fiware-Service": req.body.fiwareService,
       "Fiware-ServicePath": req.body.fiwareServicePath,
@@ -16,8 +15,7 @@ const getAll = (req, res) => {
   })
     .then((result) => {
       res.render("entity", {
-        data: result,
-        keys: Object.keys(result[0]),
+        data: resp.responses.convertEntities(result),
         message: "TODO message",
       });
     })
@@ -65,7 +63,7 @@ const getType = (req, res) => {
     json: true,
   })
     .then((result) => {
-      res.render("entity", {
+      res.render("typeRes", {
         data: result,
         keys: Object.keys(result[0]),
         message: "TODO message",
