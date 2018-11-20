@@ -1,16 +1,23 @@
-<form method="POST" action="/entities">
+<form  method="POST" action="/entities">
 	<!-- COMPONENT START -->
 	<div class="form-group">
 		<label for="">Fiware-Service</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input id="fiwareService" name="fiwareService" type="text" class="form-control test2" placeholder='Enter Fiware-Service...' />
+			<input id="fiwareService" name="fiwareService" type="text" class="form-control test2" placeholder='Enter Fiware-Service...'  />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="">Fiware-Service-Path</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input id="fiwareServicePath" name="fiwareServicePath" type="text" class="form-control test2" placeholder=<%= data %> />
+			<input id="fiwareServicePath" name="fiwareServicePath" type="text" class="form-control test2" value=<%= data %>  />
 		</div>
+	</div>
+	<div class="form-group">
+		<label for="">Entities amount</label>
+		<div class="input-group input-file" name="Fichier1">
+			<input id="entitiesAmount" name="entitiesAmount" type="text" class="form-control test2" placeholder="Enter desired amount entities for response..."/>
+		</div>
+		<p class="text-info">If no value is specified default amount of 20 will be returned.</p>
 	</div>
 	<div class="form-group">
 		<label for="">Access-Token</label>
@@ -25,23 +32,23 @@
 	<!-- COMPONENT END -->
 	<div class="form-group">
 		<button id="main" type="submit" class="btn btn-primary pull-right">List Entities</button>
-		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+		<button  class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 				Get Access Token
 			</button>
 	</div>
 	<div class="collapse" id="collapseExample">
 			<div class="card card-body">
-				<form method="POST" action="/token">
+				<form autocomplete="off" method="POST" action="/token">
 						<div class="form-group">
 								<label for="">Email</label>
 								<div class="input-group input-file" name="Fichier1">
-									<input name="username" type="text" class="form-control" placeholder='Enter Fiware-Service...' />
+									<input autocomplete="off" name="username" type="text" class="form-control" placeholder='Enter email used on Fiware IDM portal...' />
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="">Password</label>
 								<div class="input-group input-file" name="Fichier1">
-									<input name="password" type="password" class="form-control" placeholder='Enter Fiware-Service-Path...' />
+									<input autocomplete="off" name="password" type="password" class="form-control" placeholder='Enter password used on Fiware IDM portal...' />
 								</div>
 							</div>
 							<div class="form-group">
@@ -50,17 +57,12 @@
 				</form>
 			</div>
 		</div>
-	<%if (typeof msg != 'undefined') { %>
-		<div class="card">
-	  <div class="card-header">
-	    Warning
-	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item list-group-item-danger"><%= msg %></li>
-	  </ul>
+		<%if (typeof msg != 'undefined') { %>
+			<div class="alert alert-warning"  id="success-alert" role="alert">
+				<strong>Error!</strong> <%= msg %>
 		</div>
-	<% } %>
-	<p class="text-center text-white bg-success">
+		<% } %>
+	<!-- <p class="text-center text-white bg-success">
 		<%= typeof succ != 'undefined' ? succ : '' %>
-	</p>
+	</p> -->
 </form>

@@ -12,7 +12,8 @@
       
         <!-- Bootstrap core CSS -->
         <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
-      
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
         <!-- Custom styles for this template -->
         <link href="/stylesheets/home.css" rel="stylesheet">
         <link href="/stylesheets/entity.css" rel="stylesheet">
@@ -23,11 +24,12 @@
   <%- include('./templatesTemp/navigation'); %>
 
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Ngsi Connector Web</h1>
-    <p class="lead">Chose options: List entities, Create entities, Update entities</p>
+    <h1 class="display-4">NGSIConnectorWEB</h1>
+    <p class="lead">Chose options: List all or single entity,find entities by type,create or update entities from file, get information about rules</p>
   </div>
 
   <div class="container">
+    
     <div class="card-deck mb-3 text-center">
       <div class="card mb-4 box-shadow">
         <div class="card-header">
@@ -75,6 +77,50 @@
           </ul>
           <button type="button" class="btn btn-lg btn-block btn-outline-primary " onClick="replyClick(this.id)" id="update">Update
             Entities</button>
+        </div>
+      </div>
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Details</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><small class="text-muted">List Entity</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>List single entity</li>
+            <li>Show entity details</li>
+            <li>Service and service path required</li>
+            <li>See the results of operation</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary " onClick="replyClick(this.id)" id="detailshome">List Entity</button>
+        </div>
+      </div>
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Type</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><small class="text-muted">List Entity Type</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>List entities</li>
+            <li>Show entity detail for given type</li>
+            <li>Service and service path required</li>
+            <li>See the results of operation</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary " onClick="replyClick(this.id)" id="typehome">List Entity Type</button>
+        </div>
+      </div>
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Rules</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><small class="text-muted">Entities Rules</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>List entities rules</li>
+            <li>Show single rule</li>
+            <li>Service and service path not required</li>
+          </ul>
+          <button type="button" class="btn btn-lg btn-block btn-outline-primary " onClick="replyClick(this.id)" id="rules">List Entity Rules</button>
         </div>
       </div>
     </div>

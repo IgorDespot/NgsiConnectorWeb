@@ -3,13 +3,13 @@
 	<div class="form-group">
 		<label for="">Fiware-Service</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input id="fiwareService" name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service a file' />
+			<input id="fiwareService" name="fiwareService" type="text" class="form-control" placeholder='Enter Fiware-Service...' />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="">Fiware-Service-Path</label>
 		<div class="input-group input-file" name="Fichier1">
-			<input id="fiwareServicePath" name="fiwareServicePath" type="text" class="form-control test2" placeholder=<%= data %> />
+			<input id="fiwareServicePath" name="fiwareServicePath" type="text" class="form-control test2" value=<%= data %> />
 		</div>
 	</div>
 	<div class="form-group">
@@ -56,17 +56,9 @@
 					</form>
 				</div>
 			</div>
-	<%if (typeof msg != 'undefined') { %>
-		<div class="card">
-	  <div class="card-header">
-	    Warning
-	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item list-group-item-danger"><%= msg %></li>
-	  </ul>
-		</div>
-	<% } %>
-	<p class="text-center text-white bg-success">
-		<%= typeof succ != 'undefined' ? succ : '' %>
-	</p>
+			<%if (typeof msg != 'undefined') { %>
+				<div class="alert alert-warning"  id="success-alert" role="alert">
+					<strong>Error!</strong> <%= msg %>
+			</div>
+			<% } %>
 </form>

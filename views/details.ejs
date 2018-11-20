@@ -29,33 +29,24 @@
     </div>
 
     <div class="container">
-            <% if(data.type == 'DepositPointType'){ %>
-                <%- include('./templates/depositPointType', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'DepositPoint'){ %>
-                <%- include('./templates/depositPoint', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'VehicleType'){ %>
-                <%- include('./templates/vehicleType', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'Transaction'){ %>
-                <%- include('./templates/transaction', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'SortingType'){ %>
-                <%- include('./templates/sortingType', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'Vehicle'){ %>
-                <%- include('./templates/vehicles', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'Waste'){ %>
-                <%- include('./templates/waste', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'WasteCategory'){ %>
-                <%- include('./templates/wasteCategory', {element: data}); %>
-             <% } %>
-             <% if(data.type == 'DepositPointIsle'){ %>
-                <%- include('./templates/depositPoint', {element: data}); %>
-             <% } %>
+      <div class="patka">
+        <%  Object.keys(data).forEach(function (key) { %>
+          <div class="card ">
+              <div class="card-header bg-dark text-white">
+                <%= key %>
+              </div>
+              <div class="card-body">
+                  <%if (key == 'id' || key == 'type') { %>
+                    <p class="card-text"><%= data[key] %></p>
+                  <% } else if(key == 'location') { %>
+                    <p class="card-text"><%= data[key]['value'].coordinates %></p>  
+                <% } else { %>
+                  <p class="card-text"><%= data[key].value %></p>
+                <% } %>
+              </div>
+            </div>
+            <% }) %>
+    </div>
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
           <div class="col-12 col-md">

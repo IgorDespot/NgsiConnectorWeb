@@ -10,7 +10,7 @@
 		<label for="">Fiware-Service-Path</label>
 		<div class="input-group input-file" name="Fichier1">
 				<%if (typeof data != 'undefined') { %>
-					<input id="fiwareServicePathUpload" name="fiwareServicePathUpload" type="text" class="form-control test" placeholder=<%= data %> />
+					<input id="fiwareServicePathUpload" name="fiwareServicePathUpload" type="text" class="form-control test" value=<%= data %> />
 				<% } else { %>
 					<input id="fiwareServicePathUpload" name="fiwareServicePathUpload" type="text" class="form-control test" placeholder="Enter Fiware Fiware-Service-Path.." />
 				<% } %>
@@ -61,17 +61,9 @@
 				</form>
 			</div>
 		</div>
-	<%if (typeof msg != 'undefined') { %>
-		<div class="card">
-	  <div class="card-header">
-	    Warning
-	  </div>
-	  <ul class="list-group list-group-flush">
-	    <li class="list-group-item list-group-item-danger"><%= msg %></li>
-	  </ul>
+		<%if (typeof msg != 'undefined') { %>
+			<div class="alert alert-warning"  id="success-alert" role="alert">
+				<strong>Error!</strong> <%= msg %>
 		</div>
-	<% } %>
-	<p class="text-center text-white bg-success">
-		<%= typeof succ != 'undefined' ? succ : '' %>
-	</p>
+		<% } %>
 </form>
