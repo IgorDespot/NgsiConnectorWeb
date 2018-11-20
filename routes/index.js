@@ -33,25 +33,55 @@ module.exports = (passport) => {
   });
 
   router.post("/entities", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username && !req.body.accessToken) {
-      rootController.getToken(req, res, "entities");
+    if (!req.body.accessToken && !req.body.username.includes('@')) {
+      res.render('entities', {
+        msg: 'Please provide access token, you can obtain by clicking on Get Access Token button.',
+        data: `/deusto/w4t/${ req.user.username }/real`,
+      })
+    } else if (!req.body.accessToken && req.body.username.includes('@')) {
+      rootController.getToken(req, res, 'entities');
+    } else if (!req.body.fiwareService){
+      res.render('detailshome', {
+        msg: 'Please provide Fiware Service',
+        data: `/deusto/w4t/${ req.user.username }/real`
+      });
     } else {
       rootController.getEntityAll(req, res);
-    }
+    } 
   });
 
   router.post("/index", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username && !req.body.accessToken) {
-      rootController.getToken(req, res, "detailshome");
-    } else {
+    if (!req.body.accessToken && !req.body.username.includes('@')) {
+      res.render('detailshome', {
+        msg: 'Please provide access token, you can obtain by clicking on Get Access Token button.',
+        data: `/deusto/w4t/${ req.user.username }/real`,
+      })
+    } else if (!req.body.accessToken && req.body.username.includes('@')) {
+      rootController.getToken(req, res, 'detailshome');
+    } else if (!req.body.fiwareService || !req.body.entityid){
+      res.render('detailshome', {
+        msg: 'Please provide Fiware Service/Entity ID',
+        data: `/deusto/w4t/${ req.user.username }/real`
+      });
+    } else  {
       rootController.getEntitySingle(req, res);
     }
   });
 
   router.post("/indextype", db.users.findIfLoggedin, (req, res) => {
-    if (req.body.username && !req.body.accessToken) {
-      rootController.getToken(req, res, "typehome");
-    } else {
+    if (!req.body.accessToken && !req.body.username.includes('@')) {
+      res.render('entities', {
+        msg: 'Please provide access token, you can obtain by clicking on Get Access Token button.',
+        data: `/deusto/w4t/${ req.user.username }/real`,
+      })
+    } else if (!req.body.accessToken && req.body.username.includes('@')) {
+      rootController.getToken(req, res, 'typehome');
+    } else if (!req.body.fiwareService || !req.body.type){
+      res.render('typehome', {
+        msg: 'Please provide Fiware Service/Entity ID',
+        data: `/deusto/w4t/${ req.user.username }/real`
+      });
+    }  else {
       rootController.getEntityType(req, res);
     }
   });
@@ -91,7 +121,9 @@ module.exports = (passport) => {
   });
 
   router.get("/typehome", db.users.findIfLoggedin, (req, res) => {
-    res.render("typehome");
+    res.render("typehome", {
+      data: `/deusto/w4t/${ req.user.username }/real`,
+    });
   });
   router.get("/rules", db.users.findIfLoggedin, (req, res) => {
     res.render("rules");
@@ -106,13 +138,17 @@ module.exports = (passport) => {
   });
 
   router.post("/upload", db.users.findIfLoggedin, multer, (req, res) => {
-    if (req.body.username && !req.body.accessToken) {
-      rootController.getToken(req, res, "upload");
-    } else if (!rootChecks.userServicePath(req, res)) {
-      const pathSplit = req.body.fiwareServicePathUpload.split("/");
-      res.render("upload", {
-        msg: `U cannot create items logged as ${ req.user.username } user on path
-        avaible only to ${ pathSplit[ 3 ] } user`,
+    if (!req.body.accessToken && !req.body.username.includes('@')) {
+      res.render('upload', {
+        msg: 'Please provide access token, you can obtain by clicking on Get Access Token button.',
+        data: `/deusto/w4t/${ req.user.username }/real`,
+      })
+    } else if (!req.body.accessToken && req.body.username.includes('@')) {
+      rootController.getToken(req, res, 'typehome');
+    } else if (!req.body.fiwareService || !req.body.type){
+      res.render('upload', {
+        msg: 'Please provide Fiware Service/Entity ID',
+        data: `/deusto/w4t/${ req.user.username }/real`
       });
     } else {
       rootController.postEntity(req, res);
@@ -120,13 +156,17 @@ module.exports = (passport) => {
   });
 
   router.post("/update", db.users.findIfLoggedin, multer, (req, res) => {
-    if (req.body.username && !req.body.accessToken) {
-      rootController.getToken(req, res, "update");
-    } else if (!rootChecks.userServicePath(req, res)) {
-      const pathSplit = req.body.fiwareServicePathUpload.split("/");
-      res.render("update", {
-        msg: `U cannot create items logged as ${ req.user.username } user on path
-        avaible only to ${ pathSplit[ 3 ] } user`,
+    if (!req.body.accessToken && !req.body.username.includes('@')) {
+      res.render('update', {
+        msg: 'Please provide access token, you can obtain by clicking on Get Access Token button.',
+        data: `/deusto/w4t/${ req.user.username }/real`,
+      })
+    } else if (!req.body.accessToken && req.body.username.includes('@')) {
+      rootController.getToken(req, res, 'typehome');
+    } else if (!req.body.fiwareService || !req.body.type){
+      res.render('update', {
+        msg: 'Please provide Fiware Service/Entity ID',
+        data: `/deusto/w4t/${ req.user.username }/real`
       });
     } else {
       rootController.postEntityUpdate(req, res);
