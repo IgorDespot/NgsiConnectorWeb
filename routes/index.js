@@ -144,7 +144,7 @@ module.exports = (passport) => {
         data: `/deusto/w4t/${ req.user.username }/real`,
       })
     } else if (!req.body.accessToken && req.body.username.includes('@')) {
-      rootController.getToken(req, res, 'typehome');
+      rootController.getToken(req, res, 'upload');
     } else if (!req.body.fiwareService || !req.body.type){
       res.render('upload', {
         msg: 'Please provide Fiware Service/Entity ID',
@@ -162,7 +162,7 @@ module.exports = (passport) => {
         data: `/deusto/w4t/${ req.user.username }/real`,
       })
     } else if (!req.body.accessToken && req.body.username.includes('@')) {
-      rootController.getToken(req, res, 'typehome');
+      rootController.getToken(req, res, 'update');
     } else if (!req.body.fiwareService || !req.body.type){
       res.render('update', {
         msg: 'Please provide Fiware Service/Entity ID',
